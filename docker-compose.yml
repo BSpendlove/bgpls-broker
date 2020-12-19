@@ -1,0 +1,10 @@
+version: "3.1"
+services:
+  exabgpapi:
+    build: ./exabgp
+    ports:
+      - "179:179"
+    volumes:
+      - ./exabgp/exabgp.conf:/etc/exabgp/exabgp.conf
+    container_name: exabgpapi
+    restart: always
