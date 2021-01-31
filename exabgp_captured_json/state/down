@@ -1,0 +1,21 @@
+{
+    "exabgp": "4.0.1",
+    "time": 1608505560.8054154,
+    "host": "9a59a58abf8e",
+    "pid": 16,
+    "ppid": 1,
+    "counter": 46,
+    "type": "state",
+    "neighbor": {
+        "address": {
+            "local": "0.0.0.0",
+            "peer": "10.255.255.1"
+        },
+        "asn": {
+            "local": 65000,
+            "peer": 65000
+        },
+        "state": "down",
+        "reason": "peer reset, message (closing connection) error(Broken TCP connection)"
+    }
+}

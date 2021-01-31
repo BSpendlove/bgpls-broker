@@ -1,10 +1,24 @@
-version: "3.1"
+version: '3.1'
+
 services:
-  exabgpapi:
-    build: ./exabgp
-    ports:
-      - "179:179"
-    volumes:
-      - ./exabgp/exabgp.conf:/etc/exabgp/exabgp.conf
-    container_name: exabgpapi
-    restart: always
+    exabgpapi:
+        build: ./exabgp
+        ports:
+            - '179:179'
+        volumes:
+            - './exabgp/exabgp.conf:/etc/exabgp/exabgp.conf'
+        container_name: exabgpapi
+        restart: always
+
+    bgplsapi:
+        build: ./bgpls-api
+        ports:
+            - '5000:5000'
+        container_name: 'bgpls-api'
+        restart: always
+
+volumes:
+    exabgpapi:
+        driver: local
+    bgplsapi:
+        driver: local
