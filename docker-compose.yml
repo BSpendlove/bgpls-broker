@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.7'
 
 services:
     exabgpapi:
@@ -16,6 +16,40 @@ services:
             - '5000:5000'
         container_name: 'bgpls-api'
         restart: always
+        env_file:
+            - ./bgpls-api/env/app
+
+    bgplsapi-worker:
+        build: 
+            context: ./bgpls-api
+            dockerfile: Dockerfile-worker
+        container_name: 'bgpls-api-worker'
+        restart: always
+        env_file:
+            - ./bgpls-api/env/app
+            - ./bgpls-api/env/mongodb
+
+    mongodb:
+        image: 'mongo'
+        container_name: 'mongodb'
+        restart: always
+        env_file:
+            - ./bgpls-api/env/mongodb
+        volumes:
+            - ./mongo-data:/data/db:z
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        container_name: rabbitmq
+        volumes:
+            - ./rabbitmq/etc/:/etc/rabbitmq/:z
+            - ./rabbitmq/data/:/var/lib/rabbitmq/:z
+            - ./rabbitmq/logs/:/var/log/rabbitmq/:z
+        env_file:
+            - ./rabbitmq/.env
+        ports:
+            - 5672:5672
+            - 15672:15672
 
 volumes:
     exabgpapi:

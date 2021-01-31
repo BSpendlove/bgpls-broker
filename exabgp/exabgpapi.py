@@ -36,11 +36,8 @@ while True:
         url = None
         if message:
             logging.debug("Message received from peer...\n{}".format(json.dumps(message)))
-            if message["type"] == "state":
-                url = "{}/exabgp/neighbor/state".format(api_url)
-            #url = "{}/api/v1/test".format(api_url)
-            if url:
-                requests.post(url, json=message)
+            url = "{}/exabgp/".format(api_url)
+            requests.post(url, json=message)
 
     except KeyboardInterrupt:
         pass
