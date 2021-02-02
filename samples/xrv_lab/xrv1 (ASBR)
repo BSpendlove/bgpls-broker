@@ -1,0 +1,84 @@
+hostname xrv1
+interface Loopback0
+ ipv4 address 10.255.255.1 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.4.20.134 255.255.255.0
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.13.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/2
+ ipv4 address 10.0.14.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.0.12.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+route-policy PASS
+  pass
+end-policy
+!
+router isis 1
+ is-type level-2-only
+ net 49.0001.0000.0000.0001.00
+ segment-routing global-block 76800 109567
+ address-family ipv4 unicast
+  metric-style wide
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+  segment-routing mpls
+ !
+ interface Loopback0
+  passive
+  circuit-type level-2-only
+  address-family ipv4 unicast
+   prefix-sid absolute 90001
+  !
+ !
+ interface GigabitEthernet0/0/0/0
+  passive
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/2
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/3
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65510
+ bgp router-id 10.255.255.1
+ address-family ipv4 unicast
+ !
+ address-family link-state link-state
+ !
+ neighbor 10.4.20.129
+  remote-as 65510
+  address-family link-state link-state
+   route-policy PASS in
+   route-policy PASS out
+  !
+ !
+!
+mpls traffic-eng
+!
+segment-routing
+!
+end

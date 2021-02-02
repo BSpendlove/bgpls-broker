@@ -18,6 +18,9 @@ class MongoDB:
     def delete_collection(self, collection, query_filter={}):
         return self.db[collection].remove(query_filter)
 
+    def update(self, collection, query_filter, update_query):
+        return self.db[collection].update(query_filter, {"$set": update_query}, upsert=True)
+
     def insert_one(self, collection, data):
         collection = self.db[collection]
         record = collection.insert_one(data)
@@ -45,10 +48,28 @@ class MongoDB:
             return None
         return self.db[collection].find_one(query_filter, include_fields)
 
+    def delete(self, collection, query_filter):
+        if not isinstance(query_filter, dict):
+            return None
+        return self.db[collection.delete(query_filter)]
+
     def delete_one(self, collection, query_filter):
         if not isinstance(query_filter, dict):
             return None
         return self.db[collection].delete_one(query_filter)
+
+    def remove(self, collection, query_filter={}):
+        if not isinstance(query_filter, dict):
+            return None
+        return self.db[collection].remove(query_filter)
+
+    def remove_from_collections(self, collections=[], query_filter={}):
+        if not isinstance(query_filter, dict):
+            return None
+        results = []
+        for collection in collections:
+            results.append(self.db[collection].remove(query_filter))
+        return results
 
     def update_one(self, collection, query_filter, update_query):
         if not isinstance(query_filter, dict) or not isinstance(update_query, dict):

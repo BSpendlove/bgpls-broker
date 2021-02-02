@@ -9,6 +9,9 @@ services:
             - './exabgp/exabgp.conf:/etc/exabgp/exabgp.conf'
         container_name: exabgpapi
         restart: always
+        depends_on:
+            - bgplsapi
+            - bgplsapi-worker
 
     bgplsapi:
         build: ./bgpls-api
@@ -18,6 +21,8 @@ services:
         restart: always
         env_file:
             - ./bgpls-api/env/app
+        depends_on:
+            - rabbitmq
 
     bgplsapi-worker:
         build: 
@@ -28,6 +33,8 @@ services:
         env_file:
             - ./bgpls-api/env/app
             - ./bgpls-api/env/mongodb
+        depends_on:
+            - rabbitmq
 
     mongodb:
         image: 'mongo'

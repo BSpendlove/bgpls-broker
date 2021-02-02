@@ -1,0 +1,58 @@
+hostname xrv5
+interface Loopback0
+ ipv4 address 10.255.255.5 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.0.35.5 255.255.255.0
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.45.5 255.255.255.0
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+router isis 1
+ is-type level-2-only
+ net 49.0001.0000.0000.0005.00
+ segment-routing global-block 76800 109567
+ address-family ipv4 unicast
+  metric-style wide
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+  segment-routing mpls
+ !
+ interface Loopback0
+  passive
+  circuit-type level-2-only
+  address-family ipv4 unicast
+   prefix-sid absolute 90005
+  !
+ !
+ interface GigabitEthernet0/0/0/0
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/2
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+mpls traffic-eng
+ interface GigabitEthernet0/0/0/0
+ !
+ interface GigabitEthernet0/0/0/1
+ !
+!
+segment-routing
+!
+end

@@ -1,0 +1,29 @@
+{
+    "count": 1,
+    "data": [
+        {
+            "counter": 2592,
+            "exabgp": "4.0.1",
+            "host": "0b32bbc274e5",
+            "last_down": 1612168391.0114527,
+            "last_down_reason": "peer reset, message (closing connection) error(Broken TCP connection)",
+            "neighbor": {
+                "address": {
+                    "local": "0.0.0.0",
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "local": 65510,
+                    "peer": 65510
+                },
+                "state": "up"
+            },
+            "node_id": "65510:10.4.20.130",
+            "pid": 17,
+            "ppid": 1,
+            "time": 1612168451.0481982,
+            "type": "state"
+        }
+    ],
+    "error": false
+}

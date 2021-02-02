@@ -1,0 +1,288 @@
+{
+    "count": 6,
+    "data": [
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "266",
+                    "local-te-router-ids": [
+                        "10.255.255.2"
+                    ],
+                    "node-name": "xrv2",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "node_id": "65510:000000000002",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "266",
+                    "local-te-router-ids": [
+                        "10.255.255.1"
+                    ],
+                    "node-name": "xrv1",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "266",
+                    "local-te-router-ids": [
+                        "10.255.255.5"
+                    ],
+                    "node-name": "xrv5",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "266",
+                    "local-te-router-ids": [
+                        "10.255.255.4"
+                    ],
+                    "node-name": "xrv4",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "node_id": "65510:000000000004",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "266",
+                    "local-te-router-ids": [
+                        "10.255.255.3"
+                    ],
+                    "node-name": "xrv3",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "node_id": "65510:000000000003",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "area-id": "490001",
+                    "attribute-not-implemented": "1036",
+                    "local-te-router-ids": [
+                        "10.255.255.9"
+                    ],
+                    "node-name": "xrv9k",
+                    "sids": [
+                        [
+                            32768,
+                            76800
+                        ]
+                    ],
+                    "sr-algorithms": [
+                        0,
+                        1
+                    ],
+                    "sr-capability-flags": {
+                        "I": 1,
+                        "RSV": 0,
+                        "V": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-node",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            },
+            "node_id": "65510:000000000009",
+            "protocol-id": 2
+        }
+    ],
+    "error": false
+}

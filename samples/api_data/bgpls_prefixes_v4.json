@@ -1,0 +1,865 @@
+{
+    "count": 22,
+    "data": [
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.35.0/24",
+            "ip-reachability-tlv": "10.0.35.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.12.0/24",
+            "ip-reachability-tlv": "10.0.12.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.13.0/24",
+            "ip-reachability-tlv": "10.0.13.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.14.0/24",
+            "ip-reachability-tlv": "10.0.14.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.19.0/24",
+            "ip-reachability-tlv": "10.0.19.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.12.0/24",
+            "ip-reachability-tlv": "10.0.12.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.23.0/24",
+            "ip-reachability-tlv": "10.0.23.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.24.0/24",
+            "ip-reachability-tlv": "10.0.24.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.13.0/24",
+            "ip-reachability-tlv": "10.0.13.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.23.0/24",
+            "ip-reachability-tlv": "10.0.23.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.14.0/24",
+            "ip-reachability-tlv": "10.0.14.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.24.0/24",
+            "ip-reachability-tlv": "10.0.24.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.45.0/24",
+            "ip-reachability-tlv": "10.0.45.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.45.0/24",
+            "ip-reachability-tlv": "10.0.45.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13201
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "sr-source-router-id": "10.255.255.1",
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.1/32",
+            "ip-reachability-tlv": "10.255.255.1",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13205
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "sr-source-router-id": "10.255.255.5",
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.5/32",
+            "ip-reachability-tlv": "10.255.255.5",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13204
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "sr-source-router-id": "10.255.255.4",
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.4/32",
+            "ip-reachability-tlv": "10.255.255.4",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "node_id": "65510:000000000004",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13203
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "sr-source-router-id": "10.255.255.3",
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.3/32",
+            "ip-reachability-tlv": "10.255.255.3",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "node_id": "65510:000000000003",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13202
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "sr-source-router-id": "10.255.255.2",
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.2/32",
+            "ip-reachability-tlv": "10.255.255.2",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "node_id": "65510:000000000002",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 10,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.0.19.0/24",
+            "ip-reachability-tlv": "10.0.19.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            },
+            "node_id": "65510:000000000009",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    }
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.4.20.0/24",
+            "ip-reachability-tlv": "10.4.20.0",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            },
+            "node_id": "65510:000000000009",
+            "protocol-id": 2
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "prefix-metric": 0,
+                    "sids": [
+                        13209
+                    ],
+                    "sr-algorithm": 0,
+                    "sr-prefix-attribute-flags": {
+                        "N": 1,
+                        "R": 0,
+                        "RSV": 0,
+                        "X": 0
+                    },
+                    "sr-prefix-flags": {
+                        "E": 0,
+                        "L": 0,
+                        "N": 1,
+                        "P": 0,
+                        "R": 0,
+                        "RSV": 0,
+                        "V": 0
+                    },
+                    "undecoded-sids": []
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "ip-reach-prefix": "10.255.255.9/32",
+            "ip-reachability-tlv": "10.255.255.9",
+            "l3-routing-topology": 65510,
+            "ls-nlri-type": "bgpls-prefix-v4",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "nexthop": "10.4.20.130",
+            "node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            },
+            "node_id": "65510:000000000009",
+            "protocol-id": 2
+        }
+    ],
+    "error": false
+}

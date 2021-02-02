@@ -1,0 +1,62 @@
+{
+    "exabgp": "4.0.1",
+    "time": 1612169492.3311331,
+    "host": "c18f01c12d69",
+    "pid": 16,
+    "ppid": 1,
+    "counter": 34,
+    "type": "update",
+    "neighbor": {
+        "address": {
+            "local": "0.0.0.0",
+            "peer": "10.4.20.130"
+        },
+        "asn": {
+            "local": 65510,
+            "peer": 65510
+        },
+        "direction": "receive",
+        "message": {
+            "update": {
+                "withdraw": {
+                    "bgp-ls bgp-ls": [
+                        {
+                            "ls-nlri-type": "bgpls-prefix-v4",
+                            "l3-routing-topology": 65510,
+                            "protocol-id": 2,
+                            "node-descriptors": {
+                                "autonomous-system": 65510,
+                                "bgp-ls-identifier": "0",
+                                "router-id": "000000000005"
+                            },
+                            "ip-reachability-tlv": "10.0.35.0",
+                            "ip-reach-prefix": "10.0.35.0/24",
+                            "nexthop": "None"
+                        },
+                        {
+                            "ls-nlri-type": "bgpls-link",
+                            "l3-routing-topology": 65510,
+                            "protocol-id": 2,
+                            "local-node-descriptors": {
+                                "autonomous-system": 65510,
+                                "bgp-ls-identifier": "0",
+                                "router-id": "000000000005"
+                            },
+                            "remote-node-descriptors": {
+                                "autonomous-system": 65510,
+                                "bgp-ls-identifier": "0",
+                                "router-id": "000000000003"
+                            },
+                            "interface-address": {
+                                "interface-address": "10.0.35.5"
+                            },
+                            "neighbor-address": {
+                                "neighbor-address": "10.0.35.3"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

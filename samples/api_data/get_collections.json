@@ -1,0 +1,9 @@
+{
+    "data": [
+        "neighbor_state",
+        "bgpls_prefixes_v4",
+        "bgpls_links",
+        "bgpls_nodes"
+    ],
+    "error": false
+}

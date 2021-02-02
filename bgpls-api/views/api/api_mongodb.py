@@ -21,4 +21,26 @@ def mongodb_delete_collection(collection):
 def mongodb_get_neighbor_state():
     mongodb = MongoDB()
 
-    return {"error": False, "data": mongodb.find("neighbor_state")}
+    neighbors = mongodb.find("neighbor_state")
+    return {"error": False, "data": neighbors, "count": len(neighbors)}
+
+@bp.route("/bgpls_nodes", methods=["GET"])
+def mongodb_get_bgpls_nodes():
+    mongodb = MongoDB()
+
+    nodes = mongodb.find("bgpls_nodes")
+    return {"error": False, "data": nodes, "count": len(nodes)}
+
+@bp.route("/bgpls_links", methods=["GET"])
+def mongodb_get_bgpls_links():
+    mongodb = MongoDB()
+
+    links = mongodb.find("bgpls_links")
+    return {"error": False, "data": links, "count": len(links)}
+
+@bp.route("/bgpls_prefixes_v4", methods=["GET"])
+def mongodb_get_bgpls_prefixes_v4():
+    mongodb = MongoDB()
+
+    prefixes_v4 = mongodb.find("bgpls_prefixes_v4")
+    return {"error": False, "data": prefixes_v4, "count": len(prefixes_v4)}

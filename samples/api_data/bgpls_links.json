@@ -1,0 +1,1190 @@
+{
+    "count": 16,
+    "data": [
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.5"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.3",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.35.5"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.35.3"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.3"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.5",
+                    "sids": [
+                        [
+                            24005
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.35.3"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.35.5"
+            },
+            "node_id": "65510:000000000003",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.1"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.4",
+                    "sids": [
+                        [
+                            24005
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.14.1"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.14.4"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.1"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.3",
+                    "sids": [
+                        [
+                            24003
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.13.1"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.13.3"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.4"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.5",
+                    "sids": [
+                        [
+                            24005
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.45.4"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.45.5"
+            },
+            "node_id": "65510:000000000004",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.2"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.4",
+                    "sids": [
+                        [
+                            24005
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.24.2"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.24.4"
+            },
+            "node_id": "65510:000000000002",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.1"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.9",
+                    "sids": [
+                        [
+                            24007
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.19.1"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.19.9"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.2"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.3",
+                    "sids": [
+                        [
+                            24003
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.23.2"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.23.3"
+            },
+            "node_id": "65510:000000000002",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.1"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.2",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.12.1"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.12.2"
+            },
+            "node_id": "65510:000000000001",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.4"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.1",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.14.4"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.14.1"
+            },
+            "node_id": "65510:000000000004",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.3"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.1",
+                    "sids": [
+                        [
+                            24003
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.13.3"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.13.1"
+            },
+            "node_id": "65510:000000000003",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.5"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.4",
+                    "sids": [
+                        [
+                            24003
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.45.5"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000005"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.45.4"
+            },
+            "node_id": "65510:000000000005",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.4"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.2",
+                    "sids": [
+                        [
+                            24003
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.24.4"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000004"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.24.2"
+            },
+            "node_id": "65510:000000000004",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.3"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.2",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.23.3"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000003"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.23.2"
+            },
+            "node_id": "65510:000000000003",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.2"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.1",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.12.2"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000002"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.12.1"
+            },
+            "node_id": "65510:000000000002",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            }
+        },
+        {
+            "attributes": {
+                "bgp-ls": {
+                    "admin-group-mask": [
+                        0
+                    ],
+                    "attribute-not-implemented": "1173",
+                    "igp-metric": 10,
+                    "local-te-router-ids": [
+                        "10.255.255.9"
+                    ],
+                    "maximum-link-bandwidth": 125000000.0,
+                    "maximum-reservable-link-bandwidth": 0.0,
+                    "remote-te-router-id": "10.255.255.1",
+                    "sids": [
+                        [
+                            24001
+                        ]
+                    ],
+                    "sr-adj-flags": {
+                        "B": 0,
+                        "F": 0,
+                        "L": 1,
+                        "P": 0,
+                        "RSV": 0,
+                        "S": 0,
+                        "V": 1
+                    },
+                    "sr-adj-weight": 0,
+                    "te-metric": 10,
+                    "undecoded-sids": [],
+                    "unreserved-bandwidth": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                },
+                "local-preference": 100,
+                "origin": "igp"
+            },
+            "interface-address": {
+                "interface-address": "10.0.19.9"
+            },
+            "l3-routing-topology": 65510,
+            "local-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000009"
+            },
+            "ls-nlri-type": "bgpls-link",
+            "neighbor": {
+                "address": {
+                    "peer": "10.4.20.130"
+                },
+                "asn": {
+                    "peer": 65510
+                }
+            },
+            "neighbor-address": {
+                "neighbor-address": "10.0.19.1"
+            },
+            "node_id": "65510:000000000009",
+            "protocol-id": 2,
+            "remote-node-descriptors": {
+                "autonomous-system": 65510,
+                "bgp-ls-identifier": "0",
+                "router-id": "000000000001"
+            }
+        }
+    ],
+    "error": false
+}
