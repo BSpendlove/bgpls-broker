@@ -7,7 +7,7 @@ This project is a work in progress that exposes an API to the user what the netw
 
 In a nutshell, ExaBGP exposes TCP/179 (BGP) to peer with your router and gather BGP-LS information. A local script runs under the API for ExaBGP which will read stdin and take this data, send a POST request to the bgplsapi container. This container is just a middle man and will pass every BGP UPDATE into a RabbitMQ Queue which workers will consume and perform the main functions (determines which type of BGP-LS update is it, updates/deletes MongoDB). The bgplsapi container then exposes an API to the user to gather all the details related to a specific ASN. Below is a diagram how this all works.
 
-![bgplsapi Architecture](/img/bgpls-broker-architecture-igp-domains.JPG)
+![bgplsapi Architecture](/img/bgpls-broker-architecture-igp-domains.jpg)
 
 Sample configurations for exabgp and vendor configurations can be found at: [samples](../blob/master/samples/)
 
