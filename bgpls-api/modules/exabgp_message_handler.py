@@ -59,6 +59,7 @@ def exabgp_state_connected(bgp_message):
 def exabgp_state_up(bgp_message):
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
+    # withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
     app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
@@ -100,7 +101,7 @@ def exabgp_update_node(bgp_message):
     for node in nodes:
         node_id = find_unique_node_id(node)
         node.update({
-            "node_id": node_id,
+            "node-id": node_id,
             "attributes": attributes,
             "neighbor": {
                 "address": {
@@ -112,7 +113,7 @@ def exabgp_update_node(bgp_message):
             }
         })
         update_node = mongodb.update("bgpls_nodes", {
-            "node_id": node["node_id"],
+            "node-id": node["node-id"],
             "node-descriptors.autonomous-system":  node["node-descriptors"]["autonomous-system"],
             "node-descriptors.router-id": node["node-descriptors"]["router-id"]
         }, node)
@@ -130,7 +131,7 @@ def exabgp_update_link(bgp_message):
     for link in links:
         node_id = find_unique_node_id(link)
         link.update({
-            "node_id": node_id,
+            "node-id": node_id,
             "attributes": attributes,
             "neighbor": {
                 "address": {
@@ -142,7 +143,7 @@ def exabgp_update_link(bgp_message):
             }
         })
         update_link = mongodb.update("bgpls_links", {
-            "node_id": link["node_id"],
+            "node-id": link["node-id"],
             "local-node-descriptors.autonomous-system":  link["local-node-descriptors"]["autonomous-system"],
             "local-node-descriptors.router-id": link["local-node-descriptors"]["router-id"],
             "interface-address.interface-address": link["interface-address"]["interface-address"]
@@ -161,7 +162,7 @@ def exabgp_update_prefix_v4(bgp_message):
     for prefix in prefixes:
         node_id = find_unique_node_id(prefix)
         prefix.update({
-            "node_id": node_id,
+            "node-id": node_id,
             "attributes": attributes,
             "neighbor": {
                 "address": {
@@ -173,7 +174,7 @@ def exabgp_update_prefix_v4(bgp_message):
             }
         })
         update_prefix = mongodb.update("bgpls_prefixes_v4", {
-                "node_id": prefix["node_id"],
+                "node-id": prefix["node-id"],
                 "node-descriptors.autonomous-system":  prefix["node-descriptors"]["autonomous-system"],
                 "node-descriptors.router-id": prefix["node-descriptors"]["router-id"],
                 "ip-reachability-tlv": prefix["ip-reachability-tlv"],
@@ -205,14 +206,14 @@ def withdraw_bgpls_updates(bgp_message):
         if nlri["ls-nlri-type"] == "bgpls-node":
             collection = "bgpls_nodes"
             result = mongodb.remove(collection, {
-                "node_id": node_id
+                "node-id": node_id
             })
             app.logger.debug("Withdraw for bgpls-node: {} (results: {})".format(node_id, result))
             results.append(result)
         if nlri["ls-nlri-type"] == "bgpls-link":
             collection = "bgpls_links"
             result = mongodb.remove(collection, {
-                "node_id": node_id,
+                "node-id": node_id,
                 "l3-routing-topology": nlri["l3-routing-topology"],
                 "local-node-descriptors.router-id": nlri["local-node-descriptors"]["router-id"],
                 "interface-address.interface-address": nlri["interface-address"]["interface-address"]
@@ -222,7 +223,7 @@ def withdraw_bgpls_updates(bgp_message):
         if nlri["ls-nlri-type"] == "bgpls-prefix-v4":
             collection = "bgpls_prefixes_v4"
             result = mongodb.remove(collection, {
-                "node_id": node_id,
+                "node-id": node_id,
                 "l3-routing-topology": nlri["l3-routing-topology"],
                 "ip-reachability-tlv": nlri["ip-reachability-tlv"],
                 "ip-reach-prefix": nlri["ip-reach-prefix"]
