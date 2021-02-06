@@ -30,3 +30,22 @@ Currently, the API only exposes a few endpoints for the user. Here are the usefu
 You can find examples of what data is exposed from these databases in the samples folder (linked at the start of the readme). Please not that these samples may not be the most recent representation of data in the future if I forget to update documentation.
 
 This project is not production ready and I would advise to run it in a lab if you want to play around with it.
+
+## Low Level Design
+
+How does this application work on a low level design?
+
+You have a container which will run ExaBGP. Technically this container can be a standalone VM running ExaBGP or multiple containers spread across different virtual hosts in the network, the only requirement is that they can reach the BGPLSAPI container which is the frontend for taking the ExaBGP JSON messages and sending them to the RabbitMQ Queue. See below the current tested design and a custom redundant design (nothing stops the redundancy as far as the code goes, you'll probably just be performing actions against the database twice, if exabgp1 deletes an existing bgpls-link before exabgp2, exabgp2 will try to delete it again but it won't be found so some slight processing power is used at the expense of some redundancy...)
+
+![bgplsapi Redundancy](/img/bgplsapi-redundancy.jpg)
+
+The ExaBGP containers/vms run an attached process (python script) which will read the stdin, the magic happens on the encoder used in the process (`encoder json;`). This encoder will seralize data sent to ExaBGP and then the python script will be able to sent this data to the BGPLSAPI endpoint (specifically <server>/exabgp/).  Here is the ExaBGP process:
+
+![bgplsapi ExaBGP Processing](/img/exabgp-process.jpg)
+
+Once the BGPLSAPI endpoint (/exabgp/) receives this body, it will attempt to establish a connection to the RabbitMQ queue (default is `task_queue`) and will publish the JSON message received from the exabgpapi script and simply return `{"error": False}`. The BGPLSAPI exabgp endpoint doesn't care about returning any data to the exabgpapi request because it is just a middle man to send the request to RabbitMQ. I could actually send the json data directly to RabbitMQ from exabgpapi which may become a thing in the future.
+
+There are workers which will subscribe (consume) to the RabbitMQ queue `task_queue` by default and will perform actions based on the type of UPDATE that exabgp had originally sent. The worker will pass the body data to a new thread which will then execute various functions based on the type of BGP message (eg. UPDATE for bgpls-node NLRI) and will perform actions against the MongoDB database, this includes inserting/updating/deleting/flushing. You can see the overall worker flow below:
+
+![bgplsapi Worker Flow](/img/bgplsapi-worker-flow.jpg)
+
