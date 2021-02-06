@@ -19,12 +19,14 @@ def exabgp_generic_handler(bgp_message):
     #           bgpls-prefix-v4
     #           bgpls-prefix-v6
 
-    bgp_message = json.loads(normalize_keys(bgp_message, convert))
+    bgp_message = json.loads(normalize_keys(bgp_message, convert)) # Ensures any dict keys replace . with _ (eg. IP addresses)
     app.logger.debug("bgp_message received, type is:\n{}".format(bgp_message["type"]))
     app.logger.debug("========= Message ========\n{}".format(json.dumps(bgp_message, indent=4)))
     if bgp_message["type"] == "state":
         exabgp_state(bgp_message)
     if bgp_message["type"] == "update":
+        if "eor" in bgp_message["neighbor"]["message"]: # End of RIB
+            pass
         if "withdraw" in bgp_message["neighbor"]["message"]["update"]:
             withdraw_bgpls_updates(bgp_message)
         else:
@@ -49,6 +51,7 @@ def exabgp_state(bgp_message):
     return states[state_type](bgp_message)
 
 def exabgp_state_connected(bgp_message):
+    # Inserts/Updates a state in the neighbor_state collection
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -59,7 +62,7 @@ def exabgp_state_connected(bgp_message):
 def exabgp_state_up(bgp_message):
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
-    # withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned
+    withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned via the ExaBGP neighbor
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
     app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
@@ -68,7 +71,7 @@ def exabgp_state_up(bgp_message):
 def exabgp_state_down(bgp_message):
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
-    # withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned
+    withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned via the ExaBGP neighbor
     bgp_message.update({
         "last_down": bgp_message["time"],
         "last_down_reason": bgp_message["neighbor"]["reason"]
@@ -92,6 +95,7 @@ def exabgp_update(bgp_message):
             return updates[update_type](bgp_message)
 
 def exabgp_update_node(bgp_message):
+    # Inesrts/Updates a BGPLS Node entry
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -122,6 +126,7 @@ def exabgp_update_node(bgp_message):
     return updated_nodes
 
 def exabgp_update_link(bgp_message):
+    # Inesrts/Updates a BGPLS Link entry
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -153,6 +158,7 @@ def exabgp_update_link(bgp_message):
     return updated_links
 
 def exabgp_update_prefix_v4(bgp_message):
+    # Inesrts/Updates a BGPLS Prefix V4 entry
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -189,6 +195,7 @@ def exabgp_update_prefix_v6(bgp_message):
     return
 
 def withdraw_neighbor_updates(asn, address):
+    # Will withdraw all related neighbor updates (used when a peer with ExaBGP goes down)
     collections = ["bgpls_nodes", "bgpls_prefixes_v4", "bgpls_prefixes_v6"]
     mongodb = MongoDB()
     results = mongodb.remove_from_collections(collections, {"neighbor.asn.peer": asn, "neighbor.address.peer": address})
@@ -196,6 +203,7 @@ def withdraw_neighbor_updates(asn, address):
     return results
 
 def withdraw_bgpls_updates(bgp_message):
+    # Withdraws updates based on the nlri_type
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -242,7 +250,6 @@ def find_unique_node_id(nlri):
     # Therefore, the <ASN, BGP Router-ID> tuple is globally unique.
     # node_id is used as a relation between bgpls_node, bgpls_link and bgpls_prefix_v4/v6 in the database.
     # Represented as: ASN:Router-ID (eg. 65510:000000000001)
-
     common_nlri_types = ["bgpls-node", "bgpls-prefix-v4", "bgpls-prefix-v6"]
     if nlri["ls-nlri-type"] in common_nlri_types:
         node_id = "{}:{}".format(
@@ -258,10 +265,8 @@ def find_unique_node_id(nlri):
         return node_id
 
 def normalize_keys(obj, convert):
-    """
-    Recursively goes through the dictionary obj and replaces keys with the convert function.
-    https://stackoverflow.com/questions/11700705/python-recursively-replace-character-in-keys-of-nested-dictionary/38269945 by baldr
-    """
+    # Recursively goes through the dictionary obj and replaces keys with the convert function.
+    # https://stackoverflow.com/questions/11700705/python-recursively-replace-character-in-keys-of-nested-dictionary/38269945 by baldr
     if isinstance(obj, (str, int, float)):
         return obj
     if isinstance(obj, dict):

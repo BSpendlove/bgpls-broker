@@ -1,6 +1,6 @@
 from app import app
 from modules.mongodb import MongoDB
-from flask import Blueprint, request
+from flask import Blueprint
 import json
 
 bp = Blueprint("api", __name__, url_prefix="/api")
@@ -12,8 +12,8 @@ def mongodb_get_topology_asn(asn):
     topology = {"nodes":[]}
     nodes = mongodb.find("bgpls_nodes", {"node-descriptors.autonomous-system": asn})
     for node in nodes:
-        node_id = node["node_id"]
-        node_links = mongodb.find("bgpls_links", {"node_id": node_id})
+        node_id = node["node-id"]
+        node_links = mongodb.find("bgpls_links", {"node-id": node_id})
         node_prefixes_v4 = mongodb.find("bgpls_prefixes_v4", {"node_id": node_id})
         node_prefixes_v6 = mongodb.find("bgpls_prefixes_v6", {"node_id": node_id})
 
