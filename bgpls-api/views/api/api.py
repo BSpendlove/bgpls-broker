@@ -14,8 +14,8 @@ def mongodb_get_topology_asn(asn):
     for node in nodes:
         node_id = node["node-id"]
         node_links = mongodb.find("bgpls_links", {"node-id": node_id})
-        node_prefixes_v4 = mongodb.find("bgpls_prefixes_v4", {"node_id": node_id})
-        node_prefixes_v6 = mongodb.find("bgpls_prefixes_v6", {"node_id": node_id})
+        node_prefixes_v4 = mongodb.find("bgpls_prefixes_v4", {"node-id": node_id})
+        node_prefixes_v6 = mongodb.find("bgpls_prefixes_v6", {"node-id": node_id})
 
         node.update({
             "asn": asn,
@@ -24,4 +24,5 @@ def mongodb_get_topology_asn(asn):
             "prefixes-v6": node_prefixes_v6
         })
         topology["nodes"].append(node)
+    mongodb.close()
     return {"error": False, "data": topology}

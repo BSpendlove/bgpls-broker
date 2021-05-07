@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+from terminaltables import AsciiTable
 
 req = requests.request(
     "GET",
@@ -12,13 +13,44 @@ if topology["error"]:
     print(topology["message"])
     sys.exit()
 
+table_data = [["Node", "Link", "Neighbor", "TE Metric", "IGP Metric", "Unreserved BW", "Adj SIDS", "Node Pfxs", "Node Pfx SIDs"]]
+
 for node in topology["data"]["nodes"]:
     node_name = node["attributes"]["bgp-ls"]["node-name"]
-    print(node_name)
+    links = []
     for link in node["links"]:
-        print("Link: {}".format(link["interface-address"]["interface-address"]))
-        print("TE Metric: {}".format(link["attributes"]["bgp-ls"]["te-metric"]))
-        print("IGP Metric: {}".format(link["attributes"]["bgp-ls"]["igp-metric"]))
-        print("Unreserved Bandwidth: {}".format(link["attributes"]["bgp-ls"]["unreserved-bandwidth"]))
-        print("SR SIDs: {}".format(link["attributes"]["bgp-ls"]["sids"]))
-        print("\n")
+        links.append(
+            [
+                node_name,
+                link["interface-address"]["interface-address"],
+                link["neighbor-address"]["neighbor-address"],
+                link["attributes"]["bgp-ls"]["te-metric"],
+                link["attributes"]["bgp-ls"]["igp-metric"],
+                str(link["attributes"]["bgp-ls"]["unreserved-bandwidth"]),
+                str(link["attributes"]["bgp-ls"]["sids"])
+            ]
+        )
+    #print(node_name)
+    node_prefixes = []
+    for prefix in node["prefixes-v4"]:
+        prefix_flags = prefix["attributes"]["bgp-ls"]["sr-prefix-attribute-flags"]
+        for flag in prefix_flags:
+            if flag.lower() == "n": # N-Flag - https://tools.ietf.org/html/draft-ietf-isis-segment-routing-extensions-15#section-2.1.1
+                if prefix_flags[flag] == 1:
+                    node_prefixes.append(prefix)
+    #print(node_prefixes)
+    table_data += links
+    table_data += [[
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "\n".join([p["ip-reach-prefix"] for p in node_prefixes]),
+        "\n".join([str(p["attributes"]["bgp-ls"]["sids"]) for p in node_prefixes])
+    ]]
+
+table = AsciiTable(table_data)
+print(table.table)

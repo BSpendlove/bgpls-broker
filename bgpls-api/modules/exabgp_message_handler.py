@@ -26,8 +26,10 @@ def exabgp_generic_handler(bgp_message):
         exabgp_state(bgp_message)
     if bgp_message["type"] == "update":
         if "eor" in bgp_message["neighbor"]["message"]: # End of RIB
-            pass
+            app.logger.debug("---- Received EOR message -----")
+            return None
         if "withdraw" in bgp_message["neighbor"]["message"]["update"]:
+            app.logger.debug("---- Received WITHDRAW message -----")
             withdraw_bgpls_updates(bgp_message)
         else:
             exabgp_update(bgp_message)
@@ -56,6 +58,7 @@ def exabgp_state_connected(bgp_message):
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
+    mongodb.close()
     app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
@@ -65,6 +68,7 @@ def exabgp_state_up(bgp_message):
     withdraw_neighbor_updates(asn, peer) # Flush any BGP-LS Updates learned via the ExaBGP neighbor
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
+    mongodb.close()
     app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
@@ -79,6 +83,7 @@ def exabgp_state_down(bgp_message):
     del bgp_message["neighbor"]["reason"]
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
+    mongodb.close()
     app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
@@ -122,11 +127,12 @@ def exabgp_update_node(bgp_message):
             "node-descriptors.router-id": node["node-descriptors"]["router-id"]
         }, node)
         updated_nodes.append(update_node)
+    mongodb.close()
     app.logger.debug("Updated bgpls_nodes: {}".format(updated_nodes))
     return updated_nodes
 
 def exabgp_update_link(bgp_message):
-    # Inesrts/Updates a BGPLS Link entry
+    # Inserts/Updates a BGPLS Link entry
     asn = bgp_message["neighbor"]["asn"]["peer"]
     peer = bgp_message["neighbor"]["address"]["peer"]
     mongodb = MongoDB()
@@ -154,6 +160,7 @@ def exabgp_update_link(bgp_message):
             "interface-address.interface-address": link["interface-address"]["interface-address"]
         }, link)
         updated_links.append(update_link)
+    mongodb.close()
     app.logger.debug("Updated bgpls_links: {}".format(updated_links))
     return updated_links
 
@@ -187,6 +194,7 @@ def exabgp_update_prefix_v4(bgp_message):
                 "ip-reach-prefix": prefix["ip-reach-prefix"]
         }, prefix)
         updated_prefixes.append(update_prefix)
+    mongodb.close()
     app.logger.debug("Updated bgpls_prefixes_v4: {}".format(updated_prefixes))
     return updated_prefixes
 
@@ -196,9 +204,10 @@ def exabgp_update_prefix_v6(bgp_message):
 
 def withdraw_neighbor_updates(asn, address):
     # Will withdraw all related neighbor updates (used when a peer with ExaBGP goes down)
-    collections = ["bgpls_nodes", "bgpls_prefixes_v4", "bgpls_prefixes_v6"]
+    collections = ["bgpls_nodes", "bgpls_links", "bgpls_prefixes_v4", "bgpls_prefixes_v6"]
     mongodb = MongoDB()
     results = mongodb.remove_from_collections(collections, {"neighbor.asn.peer": asn, "neighbor.address.peer": address})
+    mongodb.close()
     app.logger.debug("Withdrawn all updates from {} (ASN: {}) from collections {}.\nResults: {}".format(address, asn, collections, results))
     return results
 
@@ -241,6 +250,7 @@ def withdraw_bgpls_updates(bgp_message):
         if nlri["ls-nlri-type"] == "bgpls-prefix-v6":
             collection = "bgpls_prefixes_v6"
             # Need to implement
+    mongodb.close()
 
 def find_unique_node_id(nlri):
     # https://tools.ietf.org/html/draft-ietf-idr-bgpls-segment-routing-epe-19

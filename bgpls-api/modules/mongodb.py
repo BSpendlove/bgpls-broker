@@ -75,3 +75,9 @@ class MongoDB:
         if not isinstance(query_filter, dict) or not isinstance(update_query, dict):
             return None
         return self.db[collection].update_one(query_filter, update_query)
+
+    def close(self):
+        if not self.client:
+            return True
+        self.client.close()
+        return True
