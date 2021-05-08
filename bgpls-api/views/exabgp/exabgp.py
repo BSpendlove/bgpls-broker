@@ -26,21 +26,6 @@ def exabgp():
         publisher.connect()
         publisher.publish(data)
         publisher.close()
-        """
-        connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host='rabbitmq',
-            credentials=pika.PlainCredentials(environ.get("RABBITMQ_USERNAME"), environ.get("RABBITMQ_PASSWORD"))))
-        channel = connection.channel()
-        channel.queue_declare(queue='task_queue', durable=True)
-        channel.basic_publish(
-            exchange='',
-            routing_key='task_queue',
-            body=json.dumps(data),
-            properties=pika.BasicProperties(
-                delivery_mode=2,  # make message persistent
-        ))
-        connection.close()
-        """
     except Exception as error:
         app.logger.debug("Error connecting to rabbitmq.\nReason: {}".format(error))
     return {"error": False}

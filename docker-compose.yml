@@ -46,14 +46,15 @@ services:
             - ./mongo-data:/data/db:z
 
     rabbitmq:
-        image: rabbitmq:3-management
+        image: rabbitmq:3.8.16-management
         container_name: rabbitmq
         volumes:
-            - ./rabbitmq/etc/:/etc/rabbitmq/:z
-            - ./rabbitmq/data/:/var/lib/rabbitmq/:z
-            - ./rabbitmq/logs/:/var/log/rabbitmq/:z
-        env_file:
-            - ./rabbitmq/.env
+            - ./rabbitmq/data/:/var/lib/rabbitmq/
+            - ./rabbitmq/log/:/var/log/rabbitmq/
+            - ./rabbitmq/etc/:/etc/rabbitmq/
+        environment:
+            RABBITMQ_DEFAULT_USER: "bgpls"
+            RABBITMQ_DEFAULT_PASS: "4D6JD6LwwH9!Y-ot" 
         ports:
             - 5672:5672
             - 15672:15672

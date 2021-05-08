@@ -18,7 +18,7 @@ class Publisher:
         if not self._connection or self._connection.is_closed:
             self._connection = pika.BlockingConnection(self._connection_params)
             self._channel = self._connection.channel()
-            self._channel.exchange_declare(exchange=self.EXCHANGE)
+            self._channel.exchange_declare(exchange=self.EXCHANGE, exchange_type='direct')
 
     def _publish(self, payload):
         self._channel.basic_publish(

@@ -40,6 +40,8 @@ while True:
             requests.post(url, json=message)
 
     except KeyboardInterrupt:
+        logging.info("KeyboardInterrupt")
         pass
     except IOError:
+        logging.info("IOError")
         pass

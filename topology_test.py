@@ -19,15 +19,16 @@ for node in topology["data"]["nodes"]:
     node_name = node["attributes"]["bgp-ls"]["node-name"]
     links = []
     for link in node["links"]:
+        print(link)
         links.append(
             [
                 node_name,
                 link["interface-address"]["interface-address"],
                 link["neighbor-address"]["neighbor-address"],
-                link["attributes"]["bgp-ls"]["te-metric"],
+                link["attributes"]["bgp-ls"]["te-metric"] if "te-metric" in link["attributes"]["bgp-ls"] else None,
                 link["attributes"]["bgp-ls"]["igp-metric"],
-                str(link["attributes"]["bgp-ls"]["unreserved-bandwidth"]),
-                str(link["attributes"]["bgp-ls"]["sids"])
+                str(link["attributes"]["bgp-ls"]["unreserved-bandwidth"]) if "unreserved-bandwidth" in link["attributes"]["bgp-ls"] else None,
+                str(link["attributes"]["bgp-ls"]["sids"]) if "sids" in link["attributes"]["bgp-ls"] else None
             ]
         )
     #print(node_name)

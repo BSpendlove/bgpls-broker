@@ -10,14 +10,18 @@ def main():
         host='rabbitmq',
         credentials=pika.PlainCredentials(environ.get("RABBITMQ_USERNAME"), environ.get("RABBITMQ_PASSWORD"))))
     channel = connection.channel()
-    channel.queue_declare(queue='task_queue', durable=True)
+    channel.exchange_declare(exchange='bgpls')
+    result = channel.queue_declare(queue='', exclusive=True)
+    queue_name = result.method.queue
+    channel.queue_bind(exchange='bgpls', queue=queue_name, routing_key='link_state')
+
 
     def callback(ch, method, properties, body):
         bgp_update = body.decode()
         p = multiprocessing.Process(target=exabgp_generic_handler, args=(bgp_update,))
         p.start()
 
-    channel.basic_consume(queue="task_queue",
+    channel.basic_consume(queue="",
             auto_ack=True,
             on_message_callback=callback)
 
