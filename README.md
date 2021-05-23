@@ -5,9 +5,15 @@ This project is a work in progress that exposes an API to the user what the netw
 - https://tools.ietf.org/html/rfc8571
 - https://tools.ietf.org/html/rfc7752
 
-In a nutshell, ExaBGP exposes TCP/179 (BGP) to peer with your router and gather BGP-LS information. A local script runs under the API for ExaBGP which will read stdin and take this data, send a POST request to the bgplsapi container. This container is just a middle man and will pass every BGP UPDATE into a RabbitMQ Queue which workers will consume and perform the main functions (determines which type of BGP-LS update is it, updates/deletes MongoDB). The bgplsapi container then exposes an API to the user to gather all the details related to a specific ASN. Below is a diagram how this all works.
+Brief summary:
 
-![bgplsapi Architecture](/img/bgpls-broker-architecture-igp-domains.jpg)
+ExaBGP is used as a control plane BGPLS ingestor, which we can attach a python script to the specific neighbor and ensure all updates received by this neighbor are processed via stdin. This data is then published to a RabbitMQ exchange (for the purpose of introducing multiple consumers if required).
+
+Consumers (exabgpapi_workers) will then process these BGP messages and perform specific tasks such as creating/updating/removing entries in the database. BGPLS links and prefixes can be tied to a BGPLS node based on the ASN + Router ID (and IGP domain if we are talking about something like a unified MPLS/disjointed segment routing scenario)
+
+The bgplsapi will then expose a few basic endpoints (using Flask) to query the existing database or build the specific ASN and return all the nodes with their respective links + prefixes. Below you can find an example of the flow/architecture for the bgpls-broker project:
+
+![bgplsapi Architecture](/img/bgplsapi-architecture.jpg)
 
 Sample configurations for exabgp and vendor configurations can be found at: [samples](../blob/master/samples/)
 
@@ -33,19 +39,29 @@ This project is not production ready and I would advise to run it in a lab if yo
 
 ## Low Level Design
 
-How does this application work on a low level design?
+How does this application work on a low level? What are all the moving parts?
 
-You have a container which will run ExaBGP. Technically this container can be a standalone VM running ExaBGP or multiple containers spread across different virtual hosts in the network, the only requirement is that they can reach the BGPLSAPI container which is the frontend for taking the ExaBGP JSON messages and sending them to the RabbitMQ Queue. See below the current tested design and a custom redundant design (nothing stops the redundancy as far as the code goes, you'll probably just be performing actions against the database twice, if exabgp1 deletes an existing bgpls-link before exabgp2, exabgp2 will try to delete it again but it won't be found so some slight processing power is used at the expense of some redundancy...)
+Currently, everything is powered by 3 main parts:
 
-![bgplsapi Redundancy](/img/bgplsapi-redundancy.jpg)
+1. ExaBGP
+2. RabbitMQ
+3. MongoDB
 
-The ExaBGP containers/vms run an attached process (python script) which will read the stdin, the magic happens on the encoder used in the process (`encoder json;`). This encoder will seralize data sent to ExaBGP and then the python script will be able to sent this data to the BGPLSAPI endpoint (specifically <server>/exabgp/).  Here is the ExaBGP process:
+### ExaBGP
 
-![bgplsapi ExaBGP Processing](/img/exabgp-process.jpg)
+ExaBGP is used to peer with the network using the BGP Link State AFI/SAFI. A python script is then attached to the neighbor process which will essentially read ExaBGPs existing JSON encoder (which are the BGP updates read from stdin) and these messages are then published to RabbitMQ. The concept is that each IGP area in a disjoint network will peer with a local router to grab the LSDB information and process any local updates (scalability concept).
 
-Once the BGPLSAPI endpoint (/exabgp/) receives this body, it will attempt to establish a connection to the RabbitMQ queue (default is `task_queue`) and will publish the JSON message received from the exabgpapi script and simply return `{"error": False}`. The BGPLSAPI exabgp endpoint doesn't care about returning any data to the exabgpapi request because it is just a middle man to send the request to RabbitMQ. I could actually send the json data directly to RabbitMQ from exabgpapi which may become a thing in the future.
+The exabgpapi_worker will consume messages from the RabbitMQ exchange and perform tasks such as creating/updating/deleting entries in the Mongo database. Another concept here is to have multiple exabgpapi_workers if 1 is too little to process all the BGP updates from the rabbitmq queue. Each BGP UPDATE is processed and depending on the update type (eg. a bgpls-node vs bgpls-link update or withdraw), will interact with the database and try to maintain the existing network state (based on the received BGP updates).
 
-There are workers which will subscribe (consume) to the RabbitMQ queue `task_queue` by default and will perform actions based on the type of UPDATE that exabgp had originally sent. The worker will pass the body data to a new thread which will then execute various functions based on the type of BGP message (eg. UPDATE for bgpls-node NLRI) and will perform actions against the MongoDB database, this includes inserting/updating/deleting/flushing. You can see the overall worker flow below:
+### RabbitMQ
 
-![bgplsapi Worker Flow](/img/bgplsapi-worker-flow.jpg)
+RabbitMQ is a message broker and is currently just used as a concept to introduce more apps to consume from the bgplsapi exchange (but replicated potentially to another exchange/queue?) to allow the user to introduce their own applications or workers so they are not limited to just MongoDB for example. The user can process the BGP updates in a MySQL database or just use it on demand.
 
+This part of the application also helps with the multiple workers concept, where if 1 worker is not enough to process the updates and perform actions against the Mongo database, we can just introduce another RabbitMQ consumer and have fixed a scalability issue if the worker was struggling due to memory constraints. However during my testing, I haven't ran into any issues running a single worker but I am not processing hundreds of updates a second. (sounds more like an unstable network...!!!)
+
+### MongoDB
+
+MongoDB is used purely for the sake of dumping the majority of the BGP JSON messages processed directly from ExaBGP without having to manage relationships or formatting the data... Some manual processing is done to figure out eg. which BGPLS node a specific BGPLS link or prefix belongs to, however it is quite minimal and just filters through the JSON a few levels.
+
+
+I still need to provide good examples/demos on my concept of the disjointed network, and showing proof that you can effectively build something like an end-to-end LSP based on the LSDB + TED. My idea is that technically the database being maintained just gives the user a basic JSON format of the existing LSDB and MPLS TED. Local routers are processing changes and the LSDB is constantly changing, these changes are then reflected on the BGP-LS router in that specific area and then sent to ExaBGP, as long as we maintain the database then we should have a fairly up to date topology of the existing network (including disjoint networks).

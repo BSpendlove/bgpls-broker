@@ -19,7 +19,6 @@ for node in topology["data"]["nodes"]:
     node_name = node["attributes"]["bgp-ls"]["node-name"]
     links = []
     for link in node["links"]:
-        print(link)
         links.append(
             [
                 node_name,

@@ -1,9 +1,8 @@
-from app import app
 from os import environ
 from modules.exabgp_message_handler import exabgp_generic_handler 
 import multiprocessing
 import pika
-import os
+import os, sys
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(
@@ -13,7 +12,7 @@ def main():
     channel.exchange_declare(exchange='bgpls')
     result = channel.queue_declare(queue='', exclusive=True)
     queue_name = result.method.queue
-    channel.queue_bind(exchange='bgpls', queue=queue_name, routing_key='link_state')
+    channel.queue_bind(exchange='bgpls', queue=queue_name, routing_key='bgplsapi')
 
 
     def callback(ch, method, properties, body):

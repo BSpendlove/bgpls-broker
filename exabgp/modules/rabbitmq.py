@@ -3,7 +3,7 @@ import pika
 
 class Publisher:
     EXCHANGE="bgpls"
-    ROUTING_KEY="link_state"
+    ROUTING_KEY="bgplsapi"
 
     def __init__(self, config):
         self.config = config

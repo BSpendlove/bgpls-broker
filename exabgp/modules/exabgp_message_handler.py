@@ -1,7 +1,9 @@
-from app import app
 from collections.abc import Mapping
 from modules.mongodb import MongoDB
 import json
+import logging
+
+log = logging.getLogger(__name__)
 
 def exabgp_generic_handler(bgp_message):
     # Types of messages:
@@ -20,16 +22,16 @@ def exabgp_generic_handler(bgp_message):
     #           bgpls-prefix-v6
 
     bgp_message = json.loads(normalize_keys(bgp_message, convert)) # Ensures any dict keys replace . with _ (eg. IP addresses)
-    app.logger.debug("bgp_message received, type is:\n{}".format(bgp_message["type"]))
-    app.logger.debug("========= Message ========\n{}".format(json.dumps(bgp_message, indent=4)))
+    log.debug("bgp_message received, type is:\n{}".format(bgp_message["type"]))
+    log.debug("========= Message ========\n{}".format(json.dumps(bgp_message, indent=4)))
     if bgp_message["type"] == "state":
         exabgp_state(bgp_message)
     if bgp_message["type"] == "update":
         if "eor" in bgp_message["neighbor"]["message"]: # End of RIB
-            app.logger.debug("---- Received EOR message -----")
+            log.debug("---- Received EOR message -----")
             return None
         if "withdraw" in bgp_message["neighbor"]["message"]["update"]:
-            app.logger.debug("---- Received WITHDRAW message -----")
+            log.debug("---- Received WITHDRAW message -----")
             withdraw_bgpls_updates(bgp_message)
         else:
             exabgp_update(bgp_message)
@@ -59,7 +61,7 @@ def exabgp_state_connected(bgp_message):
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
     mongodb.close()
-    app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
+    log.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
 def exabgp_state_up(bgp_message):
@@ -69,7 +71,7 @@ def exabgp_state_up(bgp_message):
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
     mongodb.close()
-    app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
+    log.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
 def exabgp_state_down(bgp_message):
@@ -84,7 +86,7 @@ def exabgp_state_down(bgp_message):
     mongodb = MongoDB()
     update_peer = mongodb.update("neighbor_state", {"neighbor.address.peer": peer}, bgp_message)
     mongodb.close()
-    app.logger.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
+    log.debug("Inserted/Updated BGP Neighbor ({}) results: {}".format(peer, update_peer))
     return update_peer
 
 def exabgp_update(bgp_message):
@@ -128,7 +130,7 @@ def exabgp_update_node(bgp_message):
         }, node)
         updated_nodes.append(update_node)
     mongodb.close()
-    app.logger.debug("Updated bgpls_nodes: {}".format(updated_nodes))
+    log.debug("Updated bgpls_nodes: {}".format(updated_nodes))
     return updated_nodes
 
 def exabgp_update_link(bgp_message):
@@ -161,7 +163,7 @@ def exabgp_update_link(bgp_message):
         }, link)
         updated_links.append(update_link)
     mongodb.close()
-    app.logger.debug("Updated bgpls_links: {}".format(updated_links))
+    log.debug("Updated bgpls_links: {}".format(updated_links))
     return updated_links
 
 def exabgp_update_prefix_v4(bgp_message):
@@ -195,7 +197,7 @@ def exabgp_update_prefix_v4(bgp_message):
         }, prefix)
         updated_prefixes.append(update_prefix)
     mongodb.close()
-    app.logger.debug("Updated bgpls_prefixes_v4: {}".format(updated_prefixes))
+    log.debug("Updated bgpls_prefixes_v4: {}".format(updated_prefixes))
     return updated_prefixes
 
 def exabgp_update_prefix_v6(bgp_message):
@@ -208,7 +210,7 @@ def withdraw_neighbor_updates(asn, address):
     mongodb = MongoDB()
     results = mongodb.remove_from_collections(collections, {"neighbor.asn.peer": asn, "neighbor.address.peer": address})
     mongodb.close()
-    app.logger.debug("Withdrawn all updates from {} (ASN: {}) from collections {}.\nResults: {}".format(address, asn, collections, results))
+    log.debug("Withdrawn all updates from {} (ASN: {}) from collections {}.\nResults: {}".format(address, asn, collections, results))
     return results
 
 def withdraw_bgpls_updates(bgp_message):
@@ -225,7 +227,7 @@ def withdraw_bgpls_updates(bgp_message):
             result = mongodb.remove(collection, {
                 "node-id": node_id
             })
-            app.logger.debug("Withdraw for bgpls-node: {} (results: {})".format(node_id, result))
+            log.debug("Withdraw for bgpls-node: {} (results: {})".format(node_id, result))
             results.append(result)
         if nlri["ls-nlri-type"] == "bgpls-link":
             collection = "bgpls_links"
@@ -235,7 +237,7 @@ def withdraw_bgpls_updates(bgp_message):
                 "local-node-descriptors.router-id": nlri["local-node-descriptors"]["router-id"],
                 "interface-address.interface-address": nlri["interface-address"]["interface-address"]
             })
-            app.logger.debug("Withdraw for bgpls-link: {} (results: {})".format(node_id, result))
+            log.debug("Withdraw for bgpls-link: {} (results: {})".format(node_id, result))
             results.append(result)
         if nlri["ls-nlri-type"] == "bgpls-prefix-v4":
             collection = "bgpls_prefixes_v4"
@@ -245,7 +247,7 @@ def withdraw_bgpls_updates(bgp_message):
                 "ip-reachability-tlv": nlri["ip-reachability-tlv"],
                 "ip-reach-prefix": nlri["ip-reach-prefix"]
             })
-            app.logger.debug("Withdraw for bgpls-prefix-v4: {} (results: {})".format(node_id, result))
+            log.debug("Withdraw for bgpls-prefix-v4: {} (results: {})".format(node_id, result))
             results.append(result)
         if nlri["ls-nlri-type"] == "bgpls-prefix-v6":
             collection = "bgpls_prefixes_v6"

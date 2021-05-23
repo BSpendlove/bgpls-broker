@@ -1,0 +1,4 @@
+MONGO_INITDB_DATABASE=bgpls
+MONGO_INITDB_ROOT_USERNAME=bgplsadmin
+MONGO_INITDB_ROOT_PASSWORD=bgplsadmin
+MONGODB_URI=mongodb://bgplsadmin:bgplsadmin@mongodb:27017/

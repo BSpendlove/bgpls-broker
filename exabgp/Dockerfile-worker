@@ -13,6 +13,5 @@ RUN pip install -r /app/requirements.txt
 WORKDIR /app
 COPY . /app
 
-# Set Entrypoint
 ENTRYPOINT [ "python3" ]
-CMD [ "app.py" ]
+CMD [ "exabgpapi_worker.py" ]

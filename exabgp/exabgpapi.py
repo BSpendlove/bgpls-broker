@@ -2,8 +2,7 @@
 import logging
 import json
 import os
-import requests
-import env_file
+from modules.rabbitmq import Publisher
 from sys import stdin, stdout
 
 logging.basicConfig(level=logging.DEBUG)
@@ -17,8 +16,15 @@ def message_parser(line):
         logging.debug("Exception Error was: {}".format(error))
     return temp_message
 
-api_details = env_file.get(path="/exabgp/env/api")
-api_url = api_details["API_URL"]
+api_url = os.environ.get("API_URL")
+publisher = Publisher(config={
+    "host": "rabbitmq",
+    "username": os.environ.get("RABBITMQ_USERNAME"),
+    "password": os.environ.get("RABBITMQ_PASSWORD")
+})
+
+# Initial connect (however publisher.publish will try to handle reconnections)
+publisher.connect()
 
 counter = 0
 while True:
@@ -36,12 +42,14 @@ while True:
         url = None
         if message:
             logging.debug("Message received from peer...\n{}".format(json.dumps(message)))
-            url = "{}/exabgp/".format(api_url)
-            requests.post(url, json=message)
+            # Send all messages to RabbitMQ Exchange (bgplsapi)
+            publisher.publish(message)
 
     except KeyboardInterrupt:
         logging.info("KeyboardInterrupt")
+        publisher.close()
         pass
     except IOError:
         logging.info("IOError")
+        publisher.close()
         pass
